@@ -13,7 +13,7 @@ The data is from experiments relating to Human Activity Recognition Using Smartp
 
 The purpose of this project is to demonstrate the ability to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis. 
 
-Outputs: 
+**Outputs:**   
 1. A tidy data set as described below (task summary) 
 2. A  link to a Github repository with your script for performing the analysis
 3. A code book that describes the variables, the data, and any transformations or work that was performed to clean up the data called CodeBook.md. You should also include a README.md in the repo with the script. 
@@ -36,7 +36,7 @@ Outputs:
 
 ### run_analysis.R:
 
-The script performs all the required tasks to merge, clean and output a tidy data set ready for analysis 
+The script performs all the required tasks to merge, clean and output a tidy data set ready for analysis   
 
 **Read in the data - training and test data sets**
 
@@ -68,8 +68,10 @@ testLabels <- read.table(file = "data/UCI HAR Dataset/test/y_test.txt", col.name
 testSubject <- read.table(file = "data/UCI HAR Dataset/test/subject_test.txt", col.names = varSubject)
 ```
 
-
+  
 **Merge the training and the test sets to create one data set.**
+
+This step combines all the training related data sets into one data set; then combines all the test related data sets into one data set; and finally combines both the training and test data sets into one consolidated data set consisting of all activity recognistion data.  
 
 
 ```r
@@ -83,8 +85,10 @@ testDF <- cbind(testSubject, testLabels, testSet)
 activityDF <- rbind(trainingDF, testDF)
 ```
 
-
+  
 **Extract only the measurements on the mean and standard deviation for each measurement**
+
+Reduce the data set, to retain only the variables required for creation of the final tidy data set. This consists of only the measurements on the mean abnd standard deviation for each measurement, along with the activity id and subject.  
 
 
 ```r
@@ -109,8 +113,10 @@ measuresMeanSTD <- tbl_df(select(activityDF, 1:2,
                                  contains("mean", ignore.case = FALSE), contains("std", ignore.case = FALSE)))
 ```
 
-
+  
 **Use descriptive activity names to name the activities in the data set**
+
+Add descriptive names for the activities, to replace the integer values, which on there own are not self explanatory.  
 
 
 ```r
@@ -123,9 +129,11 @@ activityMeasures <-
 
 
 
-
+  
 **From the activityMeasures data set, create a second independent tidy data set with the average of each variable for each activity and each subject.**   
+
 The tidy data meets the principles of tidy data, also discussed in the course [forum][3].
+The resulting data set, has the average (mean) value for each of the measuresm grouped by activity and subject.  
 
 
 ```r
@@ -135,8 +143,10 @@ measuresByActivitySubject <-
         summarise_each(funs(mean))
 ```
 
-
+  
 **Output the tidy data set to your current working directory**
+
+The final tidy set is output as a text file to the current working directory.  
 
 
 ```r
