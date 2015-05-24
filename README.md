@@ -132,8 +132,8 @@ activityMeasures <-
   
 **From the activityMeasures data set, create a second independent tidy data set with the average of each variable for each activity and each subject.**   
 
-The tidy data meets the principles of tidy data, also discussed in the course [forum][3].
-The resulting data set, has the average (mean) value for each of the measuresm grouped by activity and subject.  
+The tidy data meets the principles of tidy data, also discussed in the course [forum][3] and laid out by [Hadley Wickham][4] in his [paper][5].  
+The resulting data set, has the average (mean) value for each of the measures grouped by activity and subject.  
 
 
 ```r
@@ -158,3 +158,5 @@ write.table(measuresByActivitySubject, file = "./measuresByActivitySubject.txt",
 [1]: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip "Human Activity Recognition Smartphone Data"
 [2]: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones "UCI Machine Learning Repository - Human Activity Recognition Using Smartphones Data Set"
 [3]: https://class.coursera.org/getdata-014/forum/thread?thread_id=31 "Tidy data and the Assignment"
+[4]: http://had.co.nz/ "Website of Hadley Wickham"
+[5]: http://vimeo.com/33727555 "Journal of Statistical Software - Tidy Data"
