@@ -154,6 +154,16 @@ write.table(measuresByActivitySubject, file = "./measuresByActivitySubject.txt",
 ```
 
 
+**Code for reading the tidy data into R:**
+
+
+```r
+address <- "https://s3.amazonaws.com/coursera-uploads/user-58aee81d6615df89f54bc1fc/973501/asst-3/e53a686001ca11e59a907907bd4eb92b.txt"
+address <- sub("^https", "http", address)
+data <- read.table(url(address), header = TRUE) 
+View(data)
+```
+
 
 [1]: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip "Human Activity Recognition Smartphone Data"
 [2]: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones "UCI Machine Learning Repository - Human Activity Recognition Using Smartphones Data Set"
